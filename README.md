@@ -1,4 +1,26 @@
+![CI](https://github.com/nmhien165-ui/K4-L3A-DAY12-NguyenMinhHien-2A202602759-CloudServicesAndDeployment/actions/workflows/ci.yml/badge.svg)
+
 # K4 — Level 3A, Ngày 12: Hạ Tầng Cloud & Deployment (240 phút)
+
+## Bật deploy tự động trên GitHub Actions
+
+Workflow `.github/workflows/ci.yml` tự chạy test và build Docker khi push hoặc
+mở pull request vào `main`. Chỉ push vào `main` mới chạy bước deploy Railway,
+và deploy chờ cả hai job test/build đạt trước. Nếu chưa có secret deploy, job
+deploy sẽ bỏ qua các bước Railway.
+
+Để bật deploy tự động, vào **Settings → Secrets and variables → Actions** của
+repo và thêm:
+
+- **Secret** `RAILWAY_TOKEN`: Project Token của project Railway này.
+- **Variable** `RAILWAY_PROJECT_ID`: `b5c32393-bad7-43df-832d-7a2ee0ec37c9`.
+- **Variable** `RAILWAY_SERVICE_ID`: `0ad44dc3-763c-4eb5-8344-b401e1d9a0e4`.
+- **Variable** `RAILWAY_ENVIRONMENT_ID`: `1a9949c2-3c8a-4f31-a25b-c5aa79f90618`.
+- **Variable** `PUBLIC_URL`: `https://k4-l3a-day12-nguyenminhhien-2a202602759-cloudser-production.up.railway.app`.
+
+Token chỉ lưu trong GitHub Secret; không dán token vào README, workflow hay chat.
+Sau khi workflow chạy thành công trên `main`, badge ở đầu README sẽ hiển thị
+`passing`.
 
 Đưa một AI agent từ `localhost:8000` lên một địa chỉ công khai mà người khác
 gọi được, có bảo mật, có giới hạn chi phí, và không sập khi bạn deploy bản mới.
